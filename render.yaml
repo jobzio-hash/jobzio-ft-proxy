@@ -1,0 +1,21 @@
+
+services:
+  - type: web
+    name: jobzio-ft-proxy
+    env: node
+    plan: free
+    region: frankfurt
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: CLIENT_ID
+        sync: false
+      - key: CLIENT_SECRET
+        sync: false
+      - key: AUTH_URL
+        value: https://api.emploi-store.fr/partenaire/oauth2/access_token?realm=/partenaire
+      - key: API_BASE
+        value: https://api.emploi-store.fr/partenaire/offresdemploi/v2
+      - key: SCOPE
+        value: api_offresdemploiv2
